@@ -5,8 +5,10 @@ var c = canvase.getContext('2d');
 canvase.width = 500;
 canvase.height = 500;
 
-var gWidth = 24;
-var gHight = 24;
+var gWidth = 12;
+var gHight = 12;
+
+var gameSpeed = 100;
 
 var xUnit = Math.floor(canvase.width / gHight);
 var yUnit = Math.floor(canvase.height / gWidth);
@@ -184,14 +186,14 @@ function buildGame() {
 
 async function run() {
     while (snaking) {
-        await sleep(80);
+        await sleep(gameSpeed);
         apple.checkEaten();
         snake.move();
         snake.drawSnake();
     } 
     
     c.fillStyle = "black";  c.fillRect(0, 0, 500, 500);
-    c.fillStyle = "red";    c.fillRect(0, 0, 500, 500); await sleep(40);
+    c.fillStyle = "red";    c.fillRect(0, 0, 500, 500); await sleep(gameSpeed);
     c.fillStyle = "black";  c.fillRect(0, 0, 500, 500);
 
     buildGame();
